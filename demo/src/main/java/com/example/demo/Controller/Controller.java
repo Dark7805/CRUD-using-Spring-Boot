@@ -9,7 +9,6 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -17,7 +16,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+
 
 
 @RestController
@@ -57,6 +56,12 @@ public class Controller {
     public Account depositAmount(@PathVariable Long ac_number, @PathVariable Double balance){
         Account ac= acimpl.depositAmount(ac_number, balance);
         return ac;
+    }
+
+    @PutMapping("/withdraw/{ac_number}/{balance}")
+    public Account withdraw(@PathVariable Long ac_number, @PathVariable Double balance){
+       Account ac=acimpl.withdraw(ac_number, balance);
+       return ac;
     }
     
     

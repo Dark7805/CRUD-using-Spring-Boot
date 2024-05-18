@@ -47,5 +47,17 @@ public class AccountServiceImpl implements AccountService {
         repo.save(account);
       return account;
     }
+    @Override
+    public Account withdraw(Long ac_number, Double balance) {
+       Optional<Account> ac=repo.findById(ac_number);
+       if(ac.isEmpty()){
+        throw new RuntimeException("Account does not exist");
+       }
+       Account account=ac.get();
+       Double finalBalance= account.getBalance()-balance;
+       account.setBalance(finalBalance);
+       repo.save(account);
+       return account;
+    }
     
 }

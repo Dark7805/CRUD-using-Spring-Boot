@@ -11,4 +11,6 @@ public interface AccountService {
 
     public List<Account>  getAllAccount();
     public Account depositAmount(Long ac_number,Double balance);
+    public Account withdraw(Long ac_number,Double balance);
+
 }
